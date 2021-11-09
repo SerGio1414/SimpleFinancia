@@ -9,7 +9,7 @@ import android.widget.TextView
 class DetalleProducto : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_detalle_pelicula)
+        setContentView(R.layout.activity_detalle_producto)
 
         val tv_nombre: TextView = findViewById(R.id.nombre_detalle)
         val tv_desc: TextView = findViewById(R.id.desc_detalle)
