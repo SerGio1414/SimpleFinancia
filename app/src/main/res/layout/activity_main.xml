@@ -1,44 +1,90 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     tools:context=".MainActivity">
 
-    <LinearLayout
+
+
+
+    <ListView
+        android:id="@+id/listView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        >
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
+         tools:layout_editor_absoluteX="-72dp">
+
+
+    </ListView>
+
+    <RelativeLayout
+
+        android:id="@+id/relativeLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+
+        <Button
+
+            android:id="@+id/Salir"
+            android:layout_width="wrap_content"
+
             android:layout_height="wrap_content"
-            android:background="@color/green"
-            android:elevation="4dp"/>
+            android:layout_alignParentLeft="true"
+            android:text="Gráfica"
+            android:textAllCaps="false"
+            android:textSize="17dp"
+            app:backgroundTint="@color/green" />
+
+        <Button
+            android:id="@+id/btn_Añadir"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:text="Anadir"
+            android:textAllCaps="false"
+            android:textSize="17dp"
+            app:backgroundTint="@color/green" />
+
+
+        <Button
+            app:backgroundTint="@color/green"
+            android:id="@+id/viewExpenses"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="45dp"
+
+            android:text="Salir   "
+            android:textAllCaps="false"
+            android:textSize="18dp" />
 
         <TextView
-            android:id="@+id/totalAmountSpentTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="100dp"
+            android:padding="10dp"
+            android:layout_marginTop="45dp"
+            android:text="Gasto/MES   MXN:"
+            android:textColor="@android:color/holo_red_dark"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Gasto Mensual:"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            android:textColor="#000"
-            android:gravity="center"
-            android:layout_marginTop="5dp"/>
+            android:layout_marginLeft="300dp"
+            android:padding="10dp"
+            android:layout_marginTop="45dp"
+            android:text="000.000"
+            android:textColor="@android:color/holo_red_dark"
+            android:textSize="20dp"
+            android:textStyle="bold" />
 
-        <androidx.coordinatorlayout.widget.CoordinatorLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recyclerView"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"/>
 
-        </androidx.coordinatorlayout.widget.CoordinatorLayout>
-    </LinearLayout>
+    </RelativeLayout>
 
-</LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
