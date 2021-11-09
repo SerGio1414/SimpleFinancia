@@ -33,8 +33,8 @@ class AdaptadorProductos: BaseAdapter {
 
     override fun getView(p0: Int, p1: View?, p2: ViewGroup?): View {
         val inflador = LayoutInflater.from(context)
-        val vista = inflador.inflate(R.layout.pelicula_view, null)
-        val textViewNombre: TextView = vista.findViewById(R.id.tv_nombre)
+        val vista = inflador.inflate(R.layout.producto_view, null)
+        val textViewNombre: TextView = vista.findViewById(R.id.textViewNombre)
         val textViewDescripcion: TextView = vista.findViewById(R.id.tv_desc)
         val img: ImageView = vista.findViewById(R.id.img_peli)
         var producto: Producto = productos[p0]
