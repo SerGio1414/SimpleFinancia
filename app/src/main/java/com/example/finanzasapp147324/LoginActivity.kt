@@ -17,6 +17,13 @@ class LoginActivity : AppCompatActivity() {
             // start your next activity
             startActivity(intent)
         }
+
+        btn_createAccount.setOnClickListener {
+
+            val intent = Intent(this, RegistrarseActivity::class.java)
+            // start your next activity
+            startActivity(intent)
+        }
     }
 
 }

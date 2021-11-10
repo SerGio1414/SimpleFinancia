@@ -3,6 +3,7 @@ package com.example.finanzasapp147324
 import android.os.Bundle
 import android.widget.ListView
 import androidx.appcompat.app.AppCompatActivity
+import kotlinx.android.synthetic.main.activity_account.*
 import kotlinx.android.synthetic.main.activity_main.*
 
 
@@ -24,6 +25,15 @@ class MainActivity : AppCompatActivity() {
 
 
         }
+
+        btn_Salir.setOnClickListener{
+
+        }
+
+        btn_Grafica.setOnClickListener {
+
+        }
+
     }
 
 

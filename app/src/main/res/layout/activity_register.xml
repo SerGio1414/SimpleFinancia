@@ -15,7 +15,7 @@
         android:layout_width="296dp"
         android:layout_height="62dp"
         android:fontFamily="sans-serif"
-        android:text="Finanza app"
+        android:text="Registrarse"
         android:textSize="50dp"/>
 
     <EditText android:id="@+id/et_emailLogin"
@@ -39,6 +39,16 @@
         android:inputType="textPassword"
         android:textAlignment="center"
         android:textColor="@color/gray_text" />
+
+    <EditText android:id="@+id/et_nombreLogin"
+        android:layout_marginTop="10dp"
+        android:layout_width="296dp"
+        android:layout_height="62dp"
+        android:hint="Nombre"
+        android:textColor="@color/gray_text"
+        android:layout_gravity="center"
+        android:textAlignment="center"
+        android:inputType="text"/>
 
     <Button
         android:id="@+id/btn_login"

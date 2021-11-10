@@ -27,7 +27,7 @@
 
         <Button
 
-            android:id="@+id/Salir"
+            android:id="@+id/btn_Grafica"
             android:layout_width="wrap_content"
 
             android:layout_height="wrap_content"
@@ -38,28 +38,28 @@
             app:backgroundTint="@color/green" />
 
         <Button
-            android:id="@+id/btn_Añadir"
+            android:id="@+id/btn_Anadir"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
-            android:text="Anadir"
+            android:text="Añadir"
             android:textAllCaps="false"
             android:textSize="17dp"
             app:backgroundTint="@color/green" />
 
 
         <Button
-            app:backgroundTint="@color/green"
-            android:id="@+id/viewExpenses"
+            android:id="@+id/btn_Salir"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
             android:layout_marginTop="45dp"
+            android:text="Salir"
 
-            android:text="Salir   "
             android:textAllCaps="false"
-            android:textSize="18dp" />
+            android:textSize="18dp"
+            app:backgroundTint="@color/green" />
 
         <TextView
             android:layout_width="wrap_content"
