@@ -1,5 +1,6 @@
 package com.example.finanzasapp147324
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.ListView
 import androidx.appcompat.app.AppCompatActivity
@@ -21,16 +22,21 @@ class MainActivity : AppCompatActivity() {
         listView.adapter= adaptador
 
 
-        btn_Añadir.setOnClickListener {
-
+        btn_Anadir.setOnClickListener {
+            val intent = Intent(this, RegistrarseActivity::class.java)
+            // start your next activity
+            startActivity(intent)
 
         }
 
         btn_Salir.setOnClickListener{
-
+            val intent = Intent(this, LoginActivity::class.java)
+            // start your next activity
+            startActivity(intent)
         }
 
         btn_Grafica.setOnClickListener {
+
 
         }
 
