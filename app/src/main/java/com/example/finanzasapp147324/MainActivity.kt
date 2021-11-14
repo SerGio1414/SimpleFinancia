@@ -36,7 +36,9 @@ class MainActivity : AppCompatActivity() {
         }
 
         btn_Grafica.setOnClickListener {
-
+            val intent = Intent(this, GraficaActivity::class.java)
+            // start your next activity
+            startActivity(intent)
 
         }
 

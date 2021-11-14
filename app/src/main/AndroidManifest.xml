@@ -23,6 +23,8 @@
             android:name=".DetalleProducto"/>
         <activity
             android:name=".RegistrarseActivity"/>
+        <activity
+            android:name=".GraficaActivity"/>
     </application>
 
 
