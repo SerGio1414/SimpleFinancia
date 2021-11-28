@@ -9,6 +9,14 @@ plugins {
 }
 
 android {
+    signingConfigs {
+        debug {
+            storeFile file('C:\\Users\\Sergio\\Documents\\Androidkeys\\iniciosesion.jks')
+            storePassword '123456'
+            keyAlias 'iniciosesion'
+            keyPassword '123456'
+        }
+    }
     compileSdk 31
 
     defaultConfig {
@@ -36,10 +44,12 @@ android {
     }
 }
 
+
+
 dependencies {
     implementation 'com.androidplot:androidplot-core:1.5.7'
 
-
+    implementation 'com.google.android.gms:play-services-auth:19.2.0'
     implementation 'androidx.core:core-ktx:1.6.0'
     implementation 'androidx.appcompat:appcompat:1.3.1'
     implementation 'com.google.android.material:material:1.4.0'

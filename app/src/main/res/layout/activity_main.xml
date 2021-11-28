@@ -62,22 +62,24 @@
             app:backgroundTint="@color/green" />
 
         <TextView
+            android:id="@+id/tv_nombre"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="100dp"
-            android:padding="10dp"
             android:layout_marginTop="45dp"
+            android:padding="10dp"
             android:text="Gasto/MES   MXN:"
             android:textColor="@android:color/holo_red_dark"
             android:textSize="20dp"
             android:textStyle="bold" />
 
         <TextView
+            android:id="@+id/tv_gastos"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="300dp"
-            android:padding="10dp"
             android:layout_marginTop="45dp"
+            android:padding="10dp"
             android:text="000.000"
             android:textColor="@android:color/holo_red_dark"
             android:textSize="20dp"

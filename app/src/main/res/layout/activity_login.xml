@@ -50,17 +50,17 @@
         android:text="Login"
         android:textColor="@color/white" />
 
-    <Button android:id="@+id/btn_createAccount"
-        android:layout_marginTop="10dp"
+    <com.google.android.gms.common.SignInButton
+        android:id="@+id/sign_in_button"
         android:layout_width="296dp"
         android:layout_height="62dp"
-        android:text="Registrate"
-        app:backgroundTint="@color/green"
-        android:fontFamily="sans-serif"
-        android:textColor="@color/white"
-        android:layout_gravity="center"/>
+        android:layout_gravity="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
 
 
-    </LinearLayout>
+</LinearLayout>
