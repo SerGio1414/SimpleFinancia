@@ -25,6 +25,8 @@
             android:name=".RegistrarseActivity"/>
         <activity
             android:name=".GraficaActivity"/>
+        <activity
+            android:name=".AgregarProductoActivity"/>
     </application>
 
 

@@ -36,7 +36,7 @@ class MainActivity : AppCompatActivity() {
 
 
         btn_Anadir.setOnClickListener {
-            val intent = Intent(this, RegistrarseActivity::class.java)
+            val intent = Intent(this, AgregarProductoActivity::class.java)
             // start your next activity
             startActivity(intent)
 
