@@ -18,7 +18,7 @@
         android:text="Registrarse"
         android:textSize="50dp"/>
 
-    <EditText android:id="@+id/et_emailLogin"
+    <EditText android:id="@+id/et_emailLoginRegister"
         android:layout_marginTop="75dp"
         android:layout_width="296dp"
         android:layout_height="62dp"
@@ -30,7 +30,7 @@
 
 
     <EditText
-        android:id="@+id/et_passwordLogin"
+        android:id="@+id/et_passwordLoginRegister"
         android:layout_width="296dp"
         android:layout_height="62dp"
         android:layout_gravity="center"
@@ -51,7 +51,7 @@
         android:inputType="text"/>
 
     <Button
-        android:id="@+id/btn_login"
+        android:id="@+id/btn_registrarse"
         android:layout_width="296dp"
         android:layout_height="62dp"
         android:layout_gravity="center"

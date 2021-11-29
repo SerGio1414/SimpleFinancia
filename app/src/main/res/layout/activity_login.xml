@@ -49,6 +49,15 @@
         app:backgroundTint="@color/green"
         android:text="Login"
         android:textColor="@color/white" />
+    <Button
+        android:id="@+id/btn_loginRegistrarse"
+        android:layout_width="296dp"
+        android:layout_height="62dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        app:backgroundTint="@color/green"
+        android:text="Registrate"
+        android:textColor="@color/white" />
 
     <com.google.android.gms.common.SignInButton
         android:id="@+id/sign_in_button"

@@ -42,11 +42,7 @@ class MainActivity : AppCompatActivity() {
 
         }
 
-        btn_Salir.setOnClickListener{
-            val intent = Intent(this, LoginActivity::class.java)
-            // start your next activity
-            finish()
-        }
+
 
         btn_Grafica.setOnClickListener {
             val intent = Intent(this, GraficaActivity::class.java)
