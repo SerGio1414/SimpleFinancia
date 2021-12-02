@@ -45,7 +45,7 @@
                 android:layout_height="wrap_content"/>
 
             <EditText
-                android:id="@+id/amount"
+                android:id="@+id/textfieldMonto"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Monto"
@@ -94,7 +94,7 @@
                 android:layout_weight="1">
 
                 <Button
-                    android:id="@+id/save"
+                    android:id="@+id/btn_guardarProducto"
 
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -102,11 +102,11 @@
                     android:layout_marginTop="2dp"
                     android:layout_marginEnd="2dp"
                     android:layout_marginBottom="2dp"
-                    app:backgroundTint="@color/green"
                     android:text="Guardar"
                     android:textAllCaps="false"
                     android:textColor="#fff"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    app:backgroundTint="@color/green" />
             </RelativeLayout>
         </LinearLayout>
 
