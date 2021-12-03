@@ -13,6 +13,7 @@ import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
+import kotlinx.android.synthetic.main.activity_register.*
 
 class RegistrarseActivity : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
@@ -25,13 +26,17 @@ class RegistrarseActivity : AppCompatActivity() {
         val btn_create: Button = findViewById(R.id.btn_registrarse)
         btn_create.setOnClickListener{
             valida_registro()
+            finish()
+        }
+        btn_cancelarRegisro.setOnClickListener {
+            finish()
         }
     }
 
     private fun valida_registro(){
 
-        val et_correo: EditText = findViewById(R.id.et_emailLogin)
-        val et_contra1: EditText = findViewById(R.id.et_passwordLogin)
+        val et_correo: EditText = findViewById(R.id.et_emailLoginRegister)
+        val et_contra1: EditText = findViewById(R.id.et_passwordLoginRegister)
         var correo: String = et_correo.text.toString()
         var contra1: String = et_contra1.text.toString()
         if(!correo.isNullOrBlank() && !contra1.isNullOrBlank()){
@@ -53,8 +58,14 @@ class RegistrarseActivity : AppCompatActivity() {
                     //Log.d(TAG, "createUserWithEmail:success")
                     val user = auth.currentUser
 
-                    Toast.makeText(baseContext, "${user!!.email} se ha creado correctamente",
+                   /* Toast.makeText(baseContext, "${user!!.email} se ha creado correctamente",
+                        Toast.LENGTH_SHORT).show()*/
+
+
+                    Toast.makeText(baseContext, "Usuario registrado.",
                         Toast.LENGTH_SHORT).show()
+
+
                     //updateUI(user)
                 } else {
                     // If sign in fails, display a message to the user.
