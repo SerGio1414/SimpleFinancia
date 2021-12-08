@@ -22,11 +22,6 @@ import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import kotlinx.android.synthetic.main.activity_login.*
 
-enum class ProviderType {
-    BASIC,
-    GOOGLE
-}
-
 const val RC_SIGN_IN = 343
 const val COD_LOGOUT = 123
 class LoginActivity : AppCompatActivity() {

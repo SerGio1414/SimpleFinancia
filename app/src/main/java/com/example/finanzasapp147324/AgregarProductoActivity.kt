@@ -33,7 +33,7 @@ class AgregarProductoActivity : AppCompatActivity() {
             val product = hashMapOf(
                 "nombre" to tv_agregarnombreproducto.text.toString()
                 //"last" to tv_agregarnombreproducto.text.toString(),
-                //"born" to 1815
+                ///"born" to 1815
             )
 
             // Add a new document with a generated ID

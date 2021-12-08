@@ -72,6 +72,7 @@ class MainActivity : AppCompatActivity() {
                 val prod = Producto(count,first_name.toString(),"Agua 1",R.drawable.c);
                 productos.add(prod);
                 count = count + 1;
+                //contador
             }
 
 
