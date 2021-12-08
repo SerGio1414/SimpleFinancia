@@ -6,6 +6,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.ListView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.firestore.FirebaseFirestore
@@ -36,20 +37,28 @@ class MainActivity : AppCompatActivity() {
 
          // Create a new user with a first and last name
         val user = hashMapOf(
-            "first" to "Ada",
-            "last" to "Lovelace",
+            "first" to "Ada osman",
+            "last" to "last test 2",
             "born" to 1815
         )
 
 // Add a new document with a generated ID
-        db.collection("users")
+        /*db.collection("users")
             .add(user)
             .addOnSuccessListener { documentReference ->
+                Toast.makeText(this,"se agrego",Toast.LENGTH_SHORT).show();
                 Log.d(ContentValues.TAG, "DocumentSnapshot added with ID: ${documentReference.id}")
             }
             .addOnFailureListener { e ->
+                Toast.makeText(this,"no se agrego",Toast.LENGTH_SHORT).show();
                 Log.w(ContentValues.TAG, "Error adding document", e)
-            }
+            }*/
+
+        val collectionReference = db.collection("users");
+
+
+
+
 /*
         val db = FirebaseFirestore.getInstance()
         db.collection("productos").document("hGeve7mBlJkJBkORs0g7").get().addOnSuccessListener { document ->

@@ -3,6 +3,7 @@ package com.example.finanzasapp147324
 import android.content.ContentValues
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.firestore.Exclude
 import com.google.firebase.firestore.IgnoreExtraProperties
@@ -18,27 +19,35 @@ class AgregarProductoActivity : AppCompatActivity() {
 
 
         btn_guardarProducto.setOnClickListener {
-            val db = Firebase.firestore
-
+                val monto = textfieldMonto.text.toString()
+                val nota = tv_agregarnombreproducto.text.toString()
             // Create a new user with a first and last name
             val user = hashMapOf(
-                "first" to "Ada",
-                "last" to "Lovelace",
+                "first" to textfieldMonto.text.toString(),
+                "last" to tv_agregarnombreproducto.text.toString(),
                 "born" to 1815
             )
 
             // Add a new document with a generated ID
-            db.collection("users")
-                .add(user)
-                .addOnSuccessListener { documentReference ->
-                    Log.d(ContentValues.TAG, "DocumentSnapshot added with ID: ${documentReference.id}")
-                }
-                .addOnFailureListener { e ->
-                    Log.w(ContentValues.TAG, "Error adding document", e)
-                }
+            try {
+                db.collection("users")
+                    .add(user)
+                    .addOnSuccessListener { documentReference ->
+                        Toast.makeText(this,"se agrego", Toast.LENGTH_SHORT).show();
+                        Log.d(ContentValues.TAG, "DocumentSnapshot added with ID: ${documentReference.id}")
+                    }
+                    .addOnFailureListener { e ->
+                        Log.w(ContentValues.TAG, "Error adding document", e)
+                    }
 
 
-            // Create a new user with a first and last name
+                // Create a new user with a first and last name
+
+            }
+            catch (e:Exception){
+                Toast.makeText(this,e.message, Toast.LENGTH_SHORT).show();
+
+            }
 
 
         }
