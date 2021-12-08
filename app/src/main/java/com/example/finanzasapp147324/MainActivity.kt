@@ -8,6 +8,8 @@ import android.util.Log
 import android.widget.ListView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.google.android.gms.tasks.Task
+import com.google.android.gms.tasks.Tasks
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
@@ -54,7 +56,24 @@ class MainActivity : AppCompatActivity() {
                 Log.w(ContentValues.TAG, "Error adding document", e)
             }*/
 
-        val collectionReference = db.collection("users");
+        val collectionReference = db.collectionGroup("productos").get();
+
+
+
+        while(!collectionReference.isComplete){
+
+        }
+            var count: Int = 1;
+            for(item in collectionReference.result){
+                val first_name = item.get("nombre");
+                //val desc = item.get("descuento");
+                //val desc = item.get("id");
+                //Toast.makeText(this,first_name.toString(),Toast.LENGTH_LONG).show();
+                val prod = Producto(count,first_name.toString(),"Agua 1",R.drawable.c);
+                productos.add(prod);
+                count = count + 1;
+            }
+
 
 
 
@@ -71,7 +90,7 @@ class MainActivity : AppCompatActivity() {
 
      ///////////////////////////Establecer usuarios en el list view como lista
 
-        agregarPeliculas();
+        //agregarPeliculas();
         val adaptador: AdaptadorProductos= AdaptadorProductos(this,productos)
 
 
@@ -123,6 +142,7 @@ class MainActivity : AppCompatActivity() {
 
     }
 
+
     fun agregarPeliculas(){
         productos.add(Producto(1,"Agua","Agua 1",R.drawable.c));
         productos.add(Producto(2,"Croquetas","Croquetas 2",R.drawable.d));
@@ -135,9 +155,38 @@ class MainActivity : AppCompatActivity() {
     }
 
 
+    override fun onRestart() {
+    // TODO Auto-generated method stub
+        super.onRestart()
+        val db = Firebase.firestore;
+        productos.clear();
+
+        val collectionReference = db.collectionGroup("productos").get();
 
 
-    override fun onBackPressed() {
+
+        while(!collectionReference.isComplete){
+
+        }
+
+        var count: Int = 1;
+
+        for(item in collectionReference.result){
+
+            val first_name = item.get("nombre");
+            //val desc = item.get("descuento");
+            //val desc = item.get("id");
+            //Toast.makeText(this,first_name.toString(),Toast.LENGTH_LONG).show();
+            val prod = Producto(count ,first_name.toString(),"Agua 1",R.drawable.c);
+            productos.add(prod);
+            count = count + 1;
+        }
+
+        val adaptador: AdaptadorProductos= AdaptadorProductos(this,productos)
+
+        val listView: ListView = findViewById(R.id.listView)
+
+        listView.adapter= adaptador
 
     }
 

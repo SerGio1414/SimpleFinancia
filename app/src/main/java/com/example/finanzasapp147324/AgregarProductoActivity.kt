@@ -1,6 +1,7 @@
 package com.example.finanzasapp147324
 
 import android.content.ContentValues
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
@@ -10,6 +11,7 @@ import com.google.firebase.firestore.IgnoreExtraProperties
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import kotlinx.android.synthetic.main.activity_agregar_producto.*
+import kotlinx.android.synthetic.main.activity_register.*
 
 class AgregarProductoActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -17,21 +19,27 @@ class AgregarProductoActivity : AppCompatActivity() {
         setContentView(R.layout.activity_agregar_producto)
         val db = Firebase.firestore
 
+        btn_cancelaragregarproducto.setOnClickListener {
+            finish();
+            //val intent = Intent(this, MainActivity::class.java)
+            // start your next activity
+            //startActivity(intent)
+        }
 
         btn_guardarProducto.setOnClickListener {
                 val monto = textfieldMonto.text.toString()
                 val nota = tv_agregarnombreproducto.text.toString()
             // Create a new user with a first and last name
-            val user = hashMapOf(
-                "first" to textfieldMonto.text.toString(),
-                "last" to tv_agregarnombreproducto.text.toString(),
-                "born" to 1815
+            val product = hashMapOf(
+                "nombre" to tv_agregarnombreproducto.text.toString()
+                //"last" to tv_agregarnombreproducto.text.toString(),
+                //"born" to 1815
             )
 
             // Add a new document with a generated ID
             try {
-                db.collection("users")
-                    .add(user)
+                db.collection("productos")
+                    .add(product)
                     .addOnSuccessListener { documentReference ->
                         Toast.makeText(this,"se agrego", Toast.LENGTH_SHORT).show();
                         Log.d(ContentValues.TAG, "DocumentSnapshot added with ID: ${documentReference.id}")
@@ -51,6 +59,8 @@ class AgregarProductoActivity : AppCompatActivity() {
 
 
         }
+
+
 
 
     }
