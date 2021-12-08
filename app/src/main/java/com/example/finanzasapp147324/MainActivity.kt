@@ -69,7 +69,7 @@ class MainActivity : AppCompatActivity() {
                 //val desc = item.get("descuento");
                 //val desc = item.get("id");
                 //Toast.makeText(this,first_name.toString(),Toast.LENGTH_LONG).show();
-                val prod = Producto(count,first_name.toString(),"Agua 1",R.drawable.c);
+                val prod = Producto(count,first_name.toString(),"Agua 1",R.drawable.c,"123");
                 productos.add(prod);
                 count = count + 1;
                 //contador
@@ -145,12 +145,12 @@ class MainActivity : AppCompatActivity() {
 
 
     fun agregarPeliculas(){
-        productos.add(Producto(1,"Agua","Agua 1",R.drawable.c));
-        productos.add(Producto(2,"Croquetas","Croquetas 2",R.drawable.d));
-        productos.add(Producto(3,"Electricidad","Electricidad 1",R.drawable.a));
-        productos.add(Producto(4,"TEST","TEST 3",R.drawable.img));
-        productos.add(Producto(5,"Agua","Agua 2",R.drawable.c));
-        productos.add(Producto(6,"Agua","Agua 3",R.drawable.c));
+        productos.add(Producto(1,"Agua","Agua 1",R.drawable.c,"123"));
+        productos.add(Producto(2,"Croquetas","Croquetas 2",R.drawable.d,"1234"));
+        productos.add(Producto(3,"Electricidad","Electricidad 1",R.drawable.a,"1234"));
+        productos.add(Producto(4,"TEST","TEST 3",R.drawable.img,"1234"));
+        productos.add(Producto(5,"Agua","Agua 2",R.drawable.c,"1234"));
+        productos.add(Producto(6,"Agua","Agua 3",R.drawable.c,"1234"));
 
 
     }
@@ -178,7 +178,7 @@ class MainActivity : AppCompatActivity() {
             //val desc = item.get("descuento");
             //val desc = item.get("id");
             //Toast.makeText(this,first_name.toString(),Toast.LENGTH_LONG).show();
-            val prod = Producto(count ,first_name.toString(),"Agua 1",R.drawable.c);
+            val prod = Producto(count ,first_name.toString(),"Agua 1",R.drawable.c,"1234");
             productos.add(prod);
             count = count + 1;
         }

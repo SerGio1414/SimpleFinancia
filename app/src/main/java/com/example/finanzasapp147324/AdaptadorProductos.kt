@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.ImageView
 import android.widget.TextView
+import kotlinx.android.synthetic.main.producto_view.view.*
 
 
 class AdaptadorProductos: BaseAdapter {
@@ -37,17 +38,21 @@ class AdaptadorProductos: BaseAdapter {
         val textViewNombre: TextView = vista.findViewById(R.id.textViewNombre)
         val textViewDescripcion: TextView = vista.findViewById(R.id.tv_desc)
         val img: ImageView = vista.findViewById(R.id.img_peli)
+        var textViewDgastoPorMes:TextView = vista.findViewById(R.id.tv_gastoPorMes)
         var producto: Producto = productos[p0]
 
         textViewNombre.setText(producto.nombre)
         textViewDescripcion.setText(producto.desc)
         img.setImageResource(producto.imagen)
+        textViewDgastoPorMes.setText(producto.gastoPorMes)
 
         vista.setOnClickListener {
             val intent: Intent = Intent(context, DetalleProducto::class.java)
             intent.putExtra("nombre", producto.nombre)
             intent.putExtra("desc", producto.desc)
             intent.putExtra("img", producto.imagen)
+            intent.putExtra("gastoPorMes", producto.gastoPorMes)
+
             context.startActivity(intent)
         }
 

@@ -42,12 +42,12 @@
             />
 
         <TextView
-            android:id="@+id/tv_desc2"
+            android:id="@+id/tv_gastoPorMes"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="8dp"
             android:justificationMode="inter_word"
-            android:text="Descripcion"
+            android:text="Gasto por mes "
 
             />
 

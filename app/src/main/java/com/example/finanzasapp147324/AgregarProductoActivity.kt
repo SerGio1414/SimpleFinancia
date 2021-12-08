@@ -1,7 +1,6 @@
 package com.example.finanzasapp147324
 
 import android.content.ContentValues
-import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
@@ -11,7 +10,6 @@ import com.google.firebase.firestore.IgnoreExtraProperties
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import kotlinx.android.synthetic.main.activity_agregar_producto.*
-import kotlinx.android.synthetic.main.activity_register.*
 
 class AgregarProductoActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -27,13 +25,14 @@ class AgregarProductoActivity : AppCompatActivity() {
         }
 
         btn_guardarProducto.setOnClickListener {
-                val monto = textfieldMonto.text.toString()
-                val nota = tv_agregarnombreproducto.text.toString()
+                val productoNombre = tv_agregarProductoNombre.text.toString()
+                val productoDescripcion = tv_agregarProductoDescripcion.text.toString()
+                val productoPrecio = tv_agregarProductoGastoMen.text.toString()
             // Create a new user with a first and last name
             val product = hashMapOf(
-                "nombre" to tv_agregarnombreproducto.text.toString()
-                //"last" to tv_agregarnombreproducto.text.toString(),
-                ///"born" to 1815
+                "nombre" to tv_agregarProductoGastoMen.text.toString(),
+                "descripcion" to tv_agregarProductoDescripcion.text.toString(),
+                "gastoPorMes"   to tv_agregarProductoGastoMen.text.toString()
             )
 
             // Add a new document with a generated ID
@@ -41,7 +40,7 @@ class AgregarProductoActivity : AppCompatActivity() {
                 db.collection("productos")
                     .add(product)
                     .addOnSuccessListener { documentReference ->
-                        Toast.makeText(this,"se agrego", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(this,"Producto agregado", Toast.LENGTH_SHORT).show();
                         Log.d(ContentValues.TAG, "DocumentSnapshot added with ID: ${documentReference.id}")
                     }
                     .addOnFailureListener { e ->
@@ -50,7 +49,7 @@ class AgregarProductoActivity : AppCompatActivity() {
 
 
                 // Create a new user with a first and last name
-
+                finish()
             }
             catch (e:Exception){
                 Toast.makeText(this,e.message, Toast.LENGTH_SHORT).show();
