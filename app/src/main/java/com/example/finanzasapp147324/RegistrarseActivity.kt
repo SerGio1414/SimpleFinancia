@@ -1,11 +1,8 @@
 package com.example.finanzasapp147324
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
-import kotlinx.android.synthetic.main.activity_login.*
-
 
 
 import android.widget.EditText
@@ -28,7 +25,7 @@ class RegistrarseActivity : AppCompatActivity() {
             valida_registro()
             finish()
         }
-        btn_cancelarRegisro.setOnClickListener {
+        btn_cancelarRegistro.setOnClickListener {
             finish()
         }
     }
