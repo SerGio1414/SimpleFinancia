@@ -23,7 +23,7 @@
 
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Gasto Mensuak"
+                android:text="Agregar producto para gasto mensual"
                 android:gravity="center"
                 android:textColor="#000"
                 android:textStyle="bold"
@@ -37,28 +37,19 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <Spinner
-                android:id="@+id/spinner"
-                android:gravity="center"
-                android:background="#fff"
-                android:entries="@array/items"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
-
             <EditText
                 android:id="@+id/tv_agregarProductoNombre"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Monto"
+                android:hint="Nombre"
                 android:textColor="#000"
-                android:inputType="number"
                 android:textColorHint="#000"/>
 
             <EditText
                 android:id="@+id/tv_agregarProductoDescripcion"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Agregar nota"
+                android:hint="Descripcion producto"
                 android:textColor="#000"
                 android:textColorHint="#000"/>
 
@@ -66,7 +57,8 @@
                 android:id="@+id/tv_agregarProductoGastoMen"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Agregar nota"
+                android:hint="Costo"
+                android:inputType="number"
                 android:textColor="#000"
                 android:textColorHint="#000"/>
 

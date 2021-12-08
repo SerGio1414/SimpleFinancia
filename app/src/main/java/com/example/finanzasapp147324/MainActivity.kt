@@ -66,10 +66,10 @@ class MainActivity : AppCompatActivity() {
             var count: Int = 1;
             for(item in collectionReference.result){
                 val first_name = item.get("nombre");
-                //val desc = item.get("descuento");
-                //val desc = item.get("id");
+                val descrip = item.get("descripcion");
+                val gasto = item.get("gastoPorMes");
                 //Toast.makeText(this,first_name.toString(),Toast.LENGTH_LONG).show();
-                val prod = Producto(count,first_name.toString(),"Agua 1",R.drawable.c,"123");
+                val prod = Producto(count,first_name.toString(),descrip.toString(),R.drawable.c,gasto.toString());
                 productos.add(prod);
                 count = count + 1;
                 //contador
