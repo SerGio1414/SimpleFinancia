@@ -41,7 +41,7 @@ class RegistrarseActivity : AppCompatActivity() {
             registrarFirebase(correo, contra1)
 
         }else{
-            Toast.makeText(this, "Ingresar datos",
+            Toast.makeText(this, "Ha ocurrido un error, intente de nuevo",
                 Toast.LENGTH_SHORT).show()
         }
     }

@@ -13,8 +13,6 @@ import android.widget.TextView
 import android.widget.Toast
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
-import java.io.File
-import java.lang.Exception
 
 
 class AdaptadorProductos: BaseAdapter {
@@ -44,7 +42,9 @@ class AdaptadorProductos: BaseAdapter {
         val textViewNombre: TextView = vista.findViewById(R.id.textViewNombre)
         val textViewDescripcion: TextView = vista.findViewById(R.id.tv_desc)
         val img: ImageView = vista.findViewById(R.id.img_peli)
-        var textViewDgastoPorMes:TextView = vista.findViewById(R.id.tv_gastoPorMes)
+        val textViewgastoPorMes:TextView = vista.findViewById(R.id.tv_gastoPorMes)
+        val textViewid:TextView = vista.findViewById(R.id.tv_idProducto)
+
         var producto: Producto = productos[p0]
 
 
@@ -52,7 +52,9 @@ class AdaptadorProductos: BaseAdapter {
         textViewNombre.setText(producto.nombre)
         textViewDescripcion.setText(producto.descripcion)
         img.setImageResource(producto.imagen)
-        textViewDgastoPorMes.setText(producto.gastoPorMes)
+        textViewgastoPorMes.setText(producto.gastoPorMes)
+        textViewid.setText(producto.id)
+
 
         vista.setOnClickListener {
             val intent: Intent = Intent(context, DetalleProducto::class.java)
@@ -60,13 +62,24 @@ class AdaptadorProductos: BaseAdapter {
             intent.putExtra("desc", producto.descripcion)
             intent.putExtra("img", producto.imagen)
             intent.putExtra("gastoPorMes", producto.gastoPorMes)
+            intent.putExtra("id", producto.id)
 
             context.startActivity(intent)
         }
 
-        vista.findViewById<ImageView>(R.id.btnBorrar).setOnClickListener{
-             eliminar(producto.nombre)
-            Toast.makeText(context, producto.nombre, Toast.LENGTH_SHORT).show()
+      //  vista.findViewById<TextView>(R.id.textViewNombre).text = producto.nombre
+      //  vista.findViewById<TextView>(R.id.tv_desc).text = producto.descripcion
+
+
+
+
+        vista.findViewById<ImageView>(R.id.btnBorrarProducto).setOnClickListener{
+             //eliminar(producto.nombre)
+           // val test = producto.nombre.toString()
+//              Toast.makeText(context,  "El producto : ${textViewid.toString()} ", Toast.LENGTH_SHORT).show()
+            Toast.makeText(context,"Eliminado",Toast.LENGTH_SHORT).show();
+
+            //Log.d(ContentValues.TAG, "DocumentSnapshot added with ID: ${context}")
 
             this.notifyDataSetChanged()
         }
@@ -76,7 +89,7 @@ class AdaptadorProductos: BaseAdapter {
 
     }
 
-    private fun eliminar(nombre: String){
+    private fun eliminar(id: String){
 
 
 
@@ -89,7 +102,7 @@ class AdaptadorProductos: BaseAdapter {
                 run loop@{
                     for (document in result) {
                         println("Day_doc_id : " + document.reference.parent.parent?.id)
-                        val first_name = document.get(nombre);
+                        val first_name = document.get(id);
 
                         db.collection("productos").document(first_name.toString())
                             .delete()
@@ -99,14 +112,14 @@ class AdaptadorProductos: BaseAdapter {
 
                         Toast.makeText(context, first_name.toString(), Toast.LENGTH_SHORT).show()
 
-                        if (first_name == nombre) return@loop // non-local return from the lambda passed to run
+                        if (first_name == id) return@loop // non-local return from the lambda passed to run
                         print(first_name)
                     }
                 }
 
             }
 
-        Toast.makeText(context, nombre, Toast.LENGTH_SHORT).show()
+        Toast.makeText(context, id, Toast.LENGTH_SHORT).show()
 
        // Toast.makeText(context, "Se elimino el archivo", Toast.LENGTH_SHORT).show()
 
