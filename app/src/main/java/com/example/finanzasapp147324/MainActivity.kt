@@ -59,6 +59,16 @@ class MainActivity : AppCompatActivity() {
         val collectionReference = db.collectionGroup("productos").get();
 
 
+        db.collection("productos")
+            .get()
+            .addOnSuccessListener { result ->
+
+                for(document in result) {
+                    println("Day_doc_id : " + document.reference.parent.parent?.id)
+                    val first_name = document.get("nombre");
+                }
+
+            }
 
         while(!collectionReference.isComplete){
 

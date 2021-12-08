@@ -1,6 +1,7 @@
 package com.example.finanzasapp147324
 
 import android.content.ContentValues
+import android.content.ContentValues.TAG
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
@@ -28,20 +29,34 @@ class AgregarProductoActivity : AppCompatActivity() {
                 val productoNombre = tv_agregarProductoNombre.text.toString()
                 val productoDescripcion = tv_agregarProductoDescripcion.text.toString()
                 val productoPrecio = tv_agregarProductoGastoMen.text.toString()
+
             // Create a new user with a first and last name
             val product = hashMapOf(
+                "id" to "a",
                 "nombre" to tv_agregarProductoNombre.text.toString(),
                 "descripcion" to tv_agregarProductoDescripcion.text.toString(),
                 "gastoPorMes"   to tv_agregarProductoGastoMen.text.toString()
+
             )
 
             // Add a new document with a generated ID
             try {
+
+
                 db.collection("productos")
                     .add(product)
                     .addOnSuccessListener { documentReference ->
                         Toast.makeText(this,"Producto agregado", Toast.LENGTH_SHORT).show();
                         Log.d(ContentValues.TAG, "DocumentSnapshot added with ID: ${documentReference.id}")
+
+                        val productoAuxMod = db.collection("productos").document(documentReference.id)
+
+                        productoAuxMod
+                            .update("id",documentReference.id)
+                            .addOnSuccessListener { Log.d(TAG, "DocumentSnapshot successfully updated!") }
+                            .addOnFailureListener { e -> Log.w(TAG, "Error updating document", e) }
+
+
                     }
                     .addOnFailureListener { e ->
                         Log.w(ContentValues.TAG, "Error adding document", e)
