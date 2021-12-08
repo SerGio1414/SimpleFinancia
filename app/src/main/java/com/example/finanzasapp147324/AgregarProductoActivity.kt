@@ -30,7 +30,7 @@ class AgregarProductoActivity : AppCompatActivity() {
                 val productoPrecio = tv_agregarProductoGastoMen.text.toString()
             // Create a new user with a first and last name
             val product = hashMapOf(
-                "nombre" to tv_agregarProductoGastoMen.text.toString(),
+                "nombre" to tv_agregarProductoNombre.text.toString(),
                 "descripcion" to tv_agregarProductoDescripcion.text.toString(),
                 "gastoPorMes"   to tv_agregarProductoGastoMen.text.toString()
             )

@@ -65,6 +65,7 @@ class MainActivity : AppCompatActivity() {
         }
             var count: Int = 1;
             for(item in collectionReference.result){
+                val id = item.get("id");
                 val first_name = item.get("nombre");
                 val descrip = item.get("descripcion");
                 val gasto = item.get("gastoPorMes");
