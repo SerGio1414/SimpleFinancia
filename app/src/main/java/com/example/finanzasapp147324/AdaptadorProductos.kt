@@ -55,8 +55,6 @@ class AdaptadorProductos: BaseAdapter {
 
         var producto: Producto = productos[p0]
 
-
-
         textViewNombre.setText(producto.nombre)
         textViewDescripcion.setText(producto.descripcion)
         img.setImageResource(producto.imagen)
@@ -77,10 +75,7 @@ class AdaptadorProductos: BaseAdapter {
             context.startActivity(intent)
         }
 
-
-
         vista.findViewById<TextView>(R.id.tv_idProducto).text = producto.id.toString()
-
 
         vista.findViewById<ImageView>(R.id.btnBorrarProducto).setOnClickListener{
             eliminar(producto.id.toString(),db);
@@ -88,8 +83,6 @@ class AdaptadorProductos: BaseAdapter {
 
         }
 
-
-        /////////////MODIFICAR Producto
         vista.findViewById<ImageView>(R.id.btnModificarProducto).setOnClickListener{
 
 
@@ -113,23 +106,13 @@ class AdaptadorProductos: BaseAdapter {
 
     private fun eliminar(id: String, db: FirebaseFirestore){
         try {
-
             var result = db.collection("productos").whereEqualTo("id",id).get();
-
-            while (!result.isComplete){
-
-            }
-
+            while (!result.isComplete){ }
             val DocumentID = result.result.documents.first().id;
-
-
             db.collection("productos").document(DocumentID)
                 .delete()
                 .addOnSuccessListener { result ->
                     (context as MainActivity).recreate();
-                    /*val intent = Intent(context, MainActivity::class.java)
-
-                    context.startActivity(intent);*/
                     Log.d(TAG, "DocumentSnapshot successfully deleted!") }
                 .addOnFailureListener { e -> Log.w(TAG, "Error deleting document", e) }
         }catch (ex: Exception){

@@ -17,57 +17,52 @@ class ModificarProductoActivity: AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_agregar_producto)
-
         val db = Firebase.firestore
+        val objectId = getIntent().getSerializableExtra("id").toString();
+        tv_agregarProductoNombre.setText(getIntent().getSerializableExtra("nombre").toString());
+        tv_agregarProductoDescripcion.setText(getIntent().getSerializableExtra("desc").toString());
+        tv_agregarProductoGastoMen.setText(getIntent().getSerializableExtra("gastoPorMes").toString());
 
-      //  tv_agregarProductoNombre.setText("Hola")
+        btn_guardarProducto.setOnClickListener {
+            try {
 
+                val productoNombre = tv_agregarProductoNombre.text.toString()
+                val productoDescripcion = tv_agregarProductoDescripcion.text.toString()
+                val productoPrecio = tv_agregarProductoGastoMen.text.toString()
+                val id = objectId;
 
+                var attributes = HashMap<String,String>();
+                attributes.put("id",id);
+                attributes.put("nombre",productoNombre);
+                attributes.put("descripcion",productoDescripcion);
+                attributes.put("gastoPorMes",productoPrecio);
 
-        tv_agregarProductoNombre.setText(getIntent().getSerializableExtra("id").toString())
-        tv_agregarProductoDescripcion.setText(getIntent().getSerializableExtra("id").toString())
-        tv_agregarProductoGastoMen.setText(getIntent().getSerializableExtra("id").toString())
+                var result = db.collection("productos").whereEqualTo("id",objectId).get();
+                while (!result.isComplete){ }
+                val DocumentID = result.result.documents.first().id;
 
+                db.collection("productos").document(DocumentID)
+                    .update(attributes as Map<String, Any>)
+                    .addOnSuccessListener { documentReference ->
+                        Toast.makeText(this,"Producto agregado", Toast.LENGTH_SHORT).show();
+                        Log.d(ContentValues.TAG, "DocumentSnapshot added with ID: ${DocumentID}")
+                    }
+                    .addOnFailureListener { e ->
+                        Log.w(ContentValues.TAG, "Error adding document", e);
+                    }
+                finish();
+            }
+            catch (e:Exception){
+                Toast.makeText(this,e.message, Toast.LENGTH_SHORT).show();
+            }
 
-        val idProduct = getIntent().getSerializableExtra("id").toString()
-        try {
-
-
-
-                    val productoAuxMod = db.collection("productos").document(idProduct)
-
-                    productoAuxMod
-                        .update("id",idProduct)
-                        .addOnSuccessListener { Log.d(ContentValues.TAG, "DocumentSnapshot successfully updated!") }
-                        .addOnFailureListener { e -> Log.w(ContentValues.TAG, "Error updating document", e) }
-
-
-
-                .addOnFailureListener { e ->
-                    Log.w(ContentValues.TAG, "Error adding document", e)
-                }
-
-
-            // Create a new user with a first and last name
-            finish();
         }
-        catch (e:Exception){
-            Toast.makeText(this,e.message, Toast.LENGTH_SHORT).show();
-
-        }
-
-
-
-
 
 
 
 
     btn_cancelaragregarproducto.setOnClickListener {
             finish();
-            //val intent = Intent(this, MainActivity::class.java)
-            // start your next activity
-            //startActivity(intent)
         }
     }
     }
