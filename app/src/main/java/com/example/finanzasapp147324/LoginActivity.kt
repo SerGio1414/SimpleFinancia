@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
+import androidx.core.content.ContextCompat.startActivity
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
@@ -51,9 +52,10 @@ class LoginActivity : AppCompatActivity() {
         }
 
         btn_login.setOnClickListener {
-            val intent = Intent(this, MainActivity::class.java)
+         //   val intent = Intent(this, MainActivity::class.java)
             // start your next activity
-            startActivity(intent)
+           // startActivity(intent)
+            valida_ingreso()
         }
 
         btn_loginRegistrarse.setOnClickListener {
@@ -64,7 +66,36 @@ class LoginActivity : AppCompatActivity() {
 
 
     }
+    private fun valida_ingreso() {
+        var correo: String = et_emailLogin.text.toString()
+        var contra: String = et_passwordLogin.text.toString()
 
+        if (!correo.isNullOrBlank() && !contra.isNullOrBlank()) {
+            ingresaFirebase(correo, contra)
+        } else {
+            Toast.makeText(
+                this, "Error",
+                Toast.LENGTH_SHORT
+            ).show()
+        }
+    }
+    private fun ingresaFirebase(email: String, password: String){
+        auth.signInWithEmailAndPassword(email, password)
+            .addOnCompleteListener(this) { task ->
+                if (task.isSuccessful) {
+                    // Sign in success, update UI with the signed-in user's information
+                    val user = auth.currentUser
+                    val intent = Intent(this, MainActivity::class.java)
+                    startActivity(intent)
+                    //updateUI(user)
+                } else {
+                    // If sign in fails, display a message to the user.
+                    Toast.makeText(baseContext, "Error ",
+                        Toast.LENGTH_SHORT).show()
+                    //updateUI(null)
+                }
+            }
+    }
 
     override fun onStart() {
         super.onStart()
@@ -91,7 +122,7 @@ class LoginActivity : AppCompatActivity() {
     private fun signOut() {
         mGoogleSignInClient.signOut()
             .addOnCompleteListener(this, OnCompleteListener<Void?> {
-                Toast.makeText(this,"Sesión terminada", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this,"Sesion terminada", Toast.LENGTH_SHORT).show()
             })
     }
 
