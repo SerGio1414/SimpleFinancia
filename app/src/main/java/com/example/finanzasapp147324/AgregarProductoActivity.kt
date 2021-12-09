@@ -64,7 +64,7 @@ class AgregarProductoActivity : AppCompatActivity() {
 
 
                 // Create a new user with a first and last name
-                finish()
+                finish();
             }
             catch (e:Exception){
                 Toast.makeText(this,e.message, Toast.LENGTH_SHORT).show();
@@ -83,25 +83,3 @@ class AgregarProductoActivity : AppCompatActivity() {
 
 }
 
-@IgnoreExtraProperties
-data class Post(
-    var uid: String? = "",
-    var author: String? = "",
-    var title: String? = "",
-    var body: String? = "",
-    var starCount: Int = 0,
-    var stars: MutableMap<String, Boolean> = HashMap()
-) {
-
-    @Exclude
-    fun toMap(): Map<String, Any?> {
-        return mapOf(
-            "uid" to uid,
-            "author" to author,
-            "title" to title,
-            "body" to body,
-            "starCount" to starCount,
-            "stars" to stars
-        )
-    }
-}
