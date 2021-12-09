@@ -16,25 +16,28 @@ class GraficaActivity: AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_grafica)
-        val domainLabels = arrayOf<Number>(1,2,3,6,7,8,9,10,13,14);
-        val series1Number = arrayOf<Number>(1,4,8,12,16,32,26,29,10,13);
-        val series2Number = arrayOf<Number>(2,8,4,7,32,16,64,12,7,10);
+        val domainLabels = arrayOf<Number>(1,2,3,4,5,6,7,8,9,10,11,12);
+        val series1Number = arrayOf<Number>(10,20,30,40,50,60,70,80,90,100);
+   //     val series2Number = arrayOf<Number>(2,8,4,7,32,16,64,12,7,10);
 
         val series1 : XYSeries = SimpleXYSeries(Arrays.asList(* series1Number),SimpleXYSeries.ArrayFormat.Y_VALS_ONLY
-            ,"Series 1");
+            ,"Gasto Mensual");
+        /*
         val series2 : XYSeries = SimpleXYSeries(Arrays.asList(* series2Number),SimpleXYSeries.ArrayFormat.Y_VALS_ONLY
             ,"Series 1");
+            */
+
 
         val series1Format = LineAndPointFormatter(Color.BLUE,Color.BLACK,null,null)
-        val series2Format = LineAndPointFormatter(Color.DKGRAY,Color.LTGRAY,null,null)
+        //val series2Format = LineAndPointFormatter(Color.DKGRAY,Color.LTGRAY,null,null)
 
         series1Format.setInterpolationParams(CatmullRomInterpolator.Params(10,
             CatmullRomInterpolator.Type.Centripetal))
-        series2Format.setInterpolationParams(CatmullRomInterpolator.Params(10,
-            CatmullRomInterpolator.Type.Centripetal))
+        //series2Format.setInterpolationParams(CatmullRomInterpolator.Params(10,
+          //  CatmullRomInterpolator.Type.Centripetal))
 
         plot.addSeries(series1,series1Format)
-        plot.addSeries(series2,series2Format)
+        //plot.addSeries(series2,series2Format)
 
         plot.graph.getLineLabelStyle(XYGraphWidget.Edge.BOTTOM).format = object : Format() {
             override fun format(

@@ -24,38 +24,9 @@ class ModificarProductoActivity: AppCompatActivity() {
 
 
 
-        tv_agregarProductoNombre.setText(getIntent().getSerializableExtra("id").toString())
+        tv_agregarProductoNombre.setText(getIntent().getSerializableExtra("nombre").toString())
         tv_agregarProductoDescripcion.setText(getIntent().getSerializableExtra("id").toString())
         tv_agregarProductoGastoMen.setText(getIntent().getSerializableExtra("id").toString())
-
-
-        val idProduct = getIntent().getSerializableExtra("id").toString()
-        try {
-
-
-
-                    val productoAuxMod = db.collection("productos").document(idProduct)
-
-                    productoAuxMod
-                        .update("id",idProduct)
-                        .addOnSuccessListener { Log.d(ContentValues.TAG, "DocumentSnapshot successfully updated!") }
-                        .addOnFailureListener { e -> Log.w(ContentValues.TAG, "Error updating document", e) }
-
-
-
-                .addOnFailureListener { e ->
-                    Log.w(ContentValues.TAG, "Error adding document", e)
-                }
-
-
-            // Create a new user with a first and last name
-            finish();
-        }
-        catch (e:Exception){
-            Toast.makeText(this,e.message, Toast.LENGTH_SHORT).show();
-
-        }
-
 
 
 
