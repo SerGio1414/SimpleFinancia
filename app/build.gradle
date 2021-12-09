@@ -12,7 +12,7 @@ android {
 
     signingConfigs {
         debug {
-            storeFile file('C:\\Users\\Sergio\\Documents\\Androidkeys\\iniciosesion.jks')
+            storeFile file('C:\\Users\\graci\\Documents\\Androidkeys\\iniciosesion.jks')
             storePassword '123456'
             keyAlias 'iniciosesion'
             keyPassword '123456'
