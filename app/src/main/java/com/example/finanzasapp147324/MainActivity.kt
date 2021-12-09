@@ -27,23 +27,15 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         val bundle = intent.extras
 
-
         if (bundle != null) {
             val name = bundle.getString("name")
             val email = bundle.getString("email")
-            // tv_nombre.setText(name)
             tv_nombre.setText(name)
         }
 
 
         val db = Firebase.firestore
 
-         // Create a new user with a first and last name
-        val user = hashMapOf(
-            "first" to "Ada osman",
-            "last" to "last test 2",
-            "born" to 1815
-        )
 
 // Add a new document with a generated ID
         /*db.collection("users")
@@ -57,10 +49,10 @@ class MainActivity : AppCompatActivity() {
                 Log.w(ContentValues.TAG, "Error adding document", e)
             }*/
 
-        val collectionReference = db.collectionGroup("productos").get();
+            val collectionReference = db.collectionGroup("productos").get();
 
 
-        db.collection("productos")
+            db.collection("productos")
             .get()
             .addOnSuccessListener { result ->
 
@@ -71,9 +63,10 @@ class MainActivity : AppCompatActivity() {
 
             }
 
-        while(!collectionReference.isComplete){
+            while(!collectionReference.isComplete){
 
-        }
+            }
+
             var count: Int = 1;
             for(item in collectionReference.result){
 
@@ -85,7 +78,6 @@ class MainActivity : AppCompatActivity() {
                 val prod = Producto(id.toString(),first_name.toString(),descrip.toString(),R.drawable.c,gasto.toString());
                 productos.add(prod);
                 count = count + 1;
-                //contador
             }
 
 
@@ -155,30 +147,13 @@ class MainActivity : AppCompatActivity() {
     btn_Salir.setOnClickListener {
             finish()
         }
-
-
-
-
-
-    }
-
-
-    fun agregarPeliculas(){
-        productos.add(Producto("1","Agua","Agua 1",R.drawable.c,"123"));
-        productos.add(Producto("2","Croquetas","Croquetas 2",R.drawable.d,"1234"));
-        productos.add(Producto("3","Electricidad","Electricidad 1",R.drawable.a,"1234"));
-        productos.add(Producto("4","TEST","TEST 3",R.drawable.img,"1234"));
-        productos.add(Producto("5","Agua","Agua 2",R.drawable.c,"1234"));
-        productos.add(Producto("6","Agua","Agua 3",R.drawable.c,"1234"));
-
-
     }
 
 
     override fun onRestart() {
     // TODO Auto-generated method stub
         super.onRestart()
-        /*val db = Firebase.firestore;
+        val db = Firebase.firestore;
         productos.clear();
 
         val collectionReference = db.collectionGroup("productos").get();
@@ -189,27 +164,22 @@ class MainActivity : AppCompatActivity() {
 
         }
 
-        var count: Int = 1;
+
         for(item in collectionReference.result){
 
             val first_name = item.get("nombre");
             val descrip = item.get("descripcion");
             val gasto = item.get("gastoPorMes");
             val id = item.get("id");
-            //Toast.makeText(this,first_name.toString(),Toast.LENGTH_LONG).show();
             val prod = Producto(id.toString(),first_name.toString(),descrip.toString(),R.drawable.c,gasto.toString());
             productos.add(prod);
-            count = count + 1;
-            //contador
         }
-
-
 
         val adaptador: AdaptadorProductos= AdaptadorProductos(this,productos)
 
         val listView: ListView = findViewById(R.id.listView)
 
-        listView.adapter= adaptador*/
+        listView.adapter= adaptador
 
     }
 

@@ -67,13 +67,6 @@ class AdaptadorProductos: BaseAdapter {
             intent.putExtra("img", producto.imagen)
             intent.putExtra("gastoPorMes", producto.gastoPorMes)
 
-
-            Log.d(ContentValues.TAG, "DocumentSnapshot added with ID: ${producto.id}")
-            Log.d(ContentValues.TAG, "DocumentSnapshot added with ID: ${producto.nombre}")
-            Log.d(ContentValues.TAG, "DocumentSnapshot added with ID: ${producto.descripcion}")
-            Log.d(ContentValues.TAG, "DocumentSnapshot added with ID: ${producto.gastoPorMes}")
-        //  Log.d(ContentValues.TAG, "DocumentSnapshot added with ID: ${producto.id}")
-
             Toast.makeText(context,producto.id,Toast.LENGTH_SHORT).show();
 
             context.startActivity(intent)
@@ -88,10 +81,6 @@ class AdaptadorProductos: BaseAdapter {
             eliminar(producto.id.toString())
             Toast.makeText(context,"Producto eliminado",Toast.LENGTH_SHORT).show();
 
-            // Log.d(ContentValues.TAG, "DocumentSnapshot added with ID: ${context}")
-
-           // this.notifyDataSetChanged()
-
         }
 
 
@@ -100,7 +89,6 @@ class AdaptadorProductos: BaseAdapter {
     }
 
     private fun eliminar(id: String){
-
 
 
         val db = Firebase.firestore
