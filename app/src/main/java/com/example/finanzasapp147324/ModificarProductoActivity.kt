@@ -56,7 +56,14 @@ class ModificarProductoActivity: AppCompatActivity() {
                 Toast.makeText(this,e.message, Toast.LENGTH_SHORT).show();
             }
 
+
         }
+
+      //  tv_agregarProductoNombre.setText("Hola")
+
+        tv_agregarProductoNombre.setText(getIntent().getSerializableExtra("nombre").toString())
+        tv_agregarProductoDescripcion.setText(getIntent().getSerializableExtra("id").toString())
+        tv_agregarProductoGastoMen.setText(getIntent().getSerializableExtra("id").toString())
 
 
 
