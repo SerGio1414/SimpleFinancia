@@ -1,5 +1,6 @@
 package com.example.finanzasapp147324
 
+import android.content.ContentValues
 import android.content.ContentValues.TAG
 import android.content.Context
 import android.content.Intent
@@ -11,6 +12,8 @@ import android.widget.BaseAdapter
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
+import androidx.core.app.ActivityCompat.recreate
+import androidx.core.content.ContextCompat.startActivity
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 
@@ -58,30 +61,37 @@ class AdaptadorProductos: BaseAdapter {
 
         vista.setOnClickListener {
             val intent: Intent = Intent(context, DetalleProducto::class.java)
+            intent.putExtra("id", producto.id)
             intent.putExtra("nombre", producto.nombre)
             intent.putExtra("desc", producto.descripcion)
             intent.putExtra("img", producto.imagen)
             intent.putExtra("gastoPorMes", producto.gastoPorMes)
-            intent.putExtra("id", producto.id)
+
+
+            Log.d(ContentValues.TAG, "DocumentSnapshot added with ID: ${producto.id}")
+            Log.d(ContentValues.TAG, "DocumentSnapshot added with ID: ${producto.nombre}")
+            Log.d(ContentValues.TAG, "DocumentSnapshot added with ID: ${producto.descripcion}")
+            Log.d(ContentValues.TAG, "DocumentSnapshot added with ID: ${producto.gastoPorMes}")
+        //    Log.d(ContentValues.TAG, "DocumentSnapshot added with ID: ${producto.id}")
+
+            Toast.makeText(context,producto.id,Toast.LENGTH_SHORT).show();
 
             context.startActivity(intent)
         }
 
-      //  vista.findViewById<TextView>(R.id.textViewNombre).text = producto.nombre
-      //  vista.findViewById<TextView>(R.id.tv_desc).text = producto.descripcion
 
 
+        vista.findViewById<TextView>(R.id.tv_idProducto).text = producto.id.toString()
 
 
         vista.findViewById<ImageView>(R.id.btnBorrarProducto).setOnClickListener{
-             //eliminar(producto.nombre)
-           // val test = producto.nombre.toString()
-//              Toast.makeText(context,  "El producto : ${textViewid.toString()} ", Toast.LENGTH_SHORT).show()
-            Toast.makeText(context,"Eliminado",Toast.LENGTH_SHORT).show();
+            eliminar(producto.id.toString())
+            Toast.makeText(context,"Producto eliminado",Toast.LENGTH_SHORT).show();
 
-            //Log.d(ContentValues.TAG, "DocumentSnapshot added with ID: ${context}")
+            // Log.d(ContentValues.TAG, "DocumentSnapshot added with ID: ${context}")
 
-            this.notifyDataSetChanged()
+           // this.notifyDataSetChanged()
+
         }
 
 
@@ -95,32 +105,37 @@ class AdaptadorProductos: BaseAdapter {
 
         val db = Firebase.firestore
 
+        db.collection("productos").document(id)
+            .delete()
+            .addOnSuccessListener { Log.d(TAG, "DocumentSnapshot successfully deleted!") }
+            .addOnFailureListener { e -> Log.w(TAG, "Error deleting document", e) }
 
+        /*
         db.collection("productos")
             .get()
             .addOnSuccessListener { result ->
                 run loop@{
                     for (document in result) {
                         println("Day_doc_id : " + document.reference.parent.parent?.id)
-                        val first_name = document.get(id);
+                        val idEliminarProducto = document.get(id);
 
-                        db.collection("productos").document(first_name.toString())
+                        db.collection("productos").document(idEliminarProducto.toString())
                             .delete()
                             .addOnSuccessListener { Log.d(TAG, "DocumentSnapshot successfully deleted!") }
                             .addOnFailureListener { e -> Log.w(TAG, "Error deleting document", e) }
 
 
-                        Toast.makeText(context, first_name.toString(), Toast.LENGTH_SHORT).show()
+                        Toast.makeText(context, idEliminarProducto.toString(), Toast.LENGTH_SHORT).show()
 
-                        if (first_name == id) return@loop // non-local return from the lambda passed to run
-                        print(first_name)
+                        if (idEliminarProducto == id) return@loop // non-local return from the lambda passed to run
+                        print(idEliminarProducto)
                     }
                 }
 
             }
 
-        Toast.makeText(context, id, Toast.LENGTH_SHORT).show()
-
+        Toast.makeText(context, "Prueba loop", Toast.LENGTH_SHORT).show()
+     */
        // Toast.makeText(context, "Se elimino el archivo", Toast.LENGTH_SHORT).show()
 
 

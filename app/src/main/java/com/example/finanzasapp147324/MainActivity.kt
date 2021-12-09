@@ -27,6 +27,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         val bundle = intent.extras
 
+
         if (bundle != null) {
             val name = bundle.getString("name")
             val email = bundle.getString("email")
@@ -130,6 +131,9 @@ class MainActivity : AppCompatActivity() {
 
         }
 
+
+
+
         val rootRef = FirebaseDatabase.getInstance().reference
         val locationRef = rootRef.child("users")
         locationRef.get().addOnCompleteListener { task ->
@@ -151,6 +155,9 @@ class MainActivity : AppCompatActivity() {
     btn_Salir.setOnClickListener {
             finish()
         }
+
+
+
 
 
     }
@@ -183,17 +190,20 @@ class MainActivity : AppCompatActivity() {
         }
 
         var count: Int = 1;
-
         for(item in collectionReference.result){
 
             val first_name = item.get("nombre");
-            //val desc = item.get("descuento");
-            //val desc = item.get("id");
+            val descrip = item.get("descripcion");
+            val gasto = item.get("gastoPorMes");
+            val id = item.get("id");
             //Toast.makeText(this,first_name.toString(),Toast.LENGTH_LONG).show();
-            val prod = Producto(count.toString() ,first_name.toString(),"Agua 1",R.drawable.c,"1234");
+            val prod = Producto(id.toString(),first_name.toString(),descrip.toString(),R.drawable.c,gasto.toString());
             productos.add(prod);
             count = count + 1;
+            //contador
         }
+
+
 
         val adaptador: AdaptadorProductos= AdaptadorProductos(this,productos)
 
@@ -206,4 +216,5 @@ class MainActivity : AppCompatActivity() {
 
 
 }
+
 
