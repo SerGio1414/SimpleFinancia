@@ -95,6 +95,28 @@ class AdaptadorProductos: BaseAdapter {
         }
 
 
+        /////////////MODIFICAR Producto
+        vista.findViewById<ImageView>(R.id.btnModificarProducto).setOnClickListener{
+
+
+            val intent: Intent = Intent(context, ModificarProductoActivity::class.java)
+            intent.putExtra("id", producto.id)
+            intent.putExtra("nombre", producto.nombre)
+            intent.putExtra("desc", producto.descripcion)
+            intent.putExtra("img", producto.imagen)
+            intent.putExtra("gastoPorMes", producto.gastoPorMes)
+          /*
+            val intent2 = Intent(context, ModificarProductoActivity::class.java)
+            // start your next activity
+            context.startActivity(intent2)
+ */
+            context.startActivity(intent)
+
+            Toast.makeText(context,"Test boton",Toast.LENGTH_SHORT).show();
+
+         }
+
+
         return vista
 
     }
