@@ -178,7 +178,7 @@ class MainActivity : AppCompatActivity() {
     override fun onRestart() {
     // TODO Auto-generated method stub
         super.onRestart()
-        val db = Firebase.firestore;
+        /*val db = Firebase.firestore;
         productos.clear();
 
         val collectionReference = db.collectionGroup("productos").get();
@@ -209,7 +209,7 @@ class MainActivity : AppCompatActivity() {
 
         val listView: ListView = findViewById(R.id.listView)
 
-        listView.adapter= adaptador
+        listView.adapter= adaptador*/
 
     }
 

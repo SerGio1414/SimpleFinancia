@@ -36,7 +36,6 @@ class AgregarProductoActivity : AppCompatActivity() {
                 "nombre" to tv_agregarProductoNombre.text.toString(),
                 "descripcion" to tv_agregarProductoDescripcion.text.toString(),
                 "gastoPorMes"   to tv_agregarProductoGastoMen.text.toString()
-
             )
 
             // Add a new document with a generated ID
@@ -56,15 +55,13 @@ class AgregarProductoActivity : AppCompatActivity() {
                             .addOnSuccessListener { Log.d(TAG, "DocumentSnapshot successfully updated!") }
                             .addOnFailureListener { e -> Log.w(TAG, "Error updating document", e) }
 
-
+                        finish();
                     }
                     .addOnFailureListener { e ->
-                        Log.w(ContentValues.TAG, "Error adding document", e)
+                        Log.w(ContentValues.TAG, "Error adding document", e);
+                        finish();
                     }
 
-
-                // Create a new user with a first and last name
-                finish();
             }
             catch (e:Exception){
                 Toast.makeText(this,e.message, Toast.LENGTH_SHORT).show();

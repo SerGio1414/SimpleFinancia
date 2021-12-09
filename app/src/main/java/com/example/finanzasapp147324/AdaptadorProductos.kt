@@ -72,7 +72,7 @@ class AdaptadorProductos: BaseAdapter {
             Log.d(ContentValues.TAG, "DocumentSnapshot added with ID: ${producto.nombre}")
             Log.d(ContentValues.TAG, "DocumentSnapshot added with ID: ${producto.descripcion}")
             Log.d(ContentValues.TAG, "DocumentSnapshot added with ID: ${producto.gastoPorMes}")
-        //    Log.d(ContentValues.TAG, "DocumentSnapshot added with ID: ${producto.id}")
+        //  Log.d(ContentValues.TAG, "DocumentSnapshot added with ID: ${producto.id}")
 
             Toast.makeText(context,producto.id,Toast.LENGTH_SHORT).show();
 
