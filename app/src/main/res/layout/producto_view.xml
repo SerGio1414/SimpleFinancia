@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <com.google.android.material.imageview.ShapeableImageView
+        app:shapeAppearanceOverlay="@style/roundedImageViewRounded"
+        android:id="@+id/img_peli"
+        android:layout_width="100dp"
+        android:layout_height="136dp"
+        android:layout_margin="8dp"
+        android:src="@drawable/a"
+        android:background="@drawable/img"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="185dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/textViewNombre"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:text="Producto"
+            android:textSize="20sp"
+            android:textStyle="bold"
+
+            />
+
+        <TextView
+            android:id="@+id/tv_desc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="8dp"
+            android:justificationMode="inter_word"
+            android:text="Descripcion"
+
+            />
+
+        <TextView
+            android:id="@+id/tv_gastoPorMes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="8dp"
+            android:justificationMode="inter_word"
+            android:text="Gasto por mes "
+
+            />
+
+        <TextView
+            android:id="@+id/tv_idProducto"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="8dp"
+            android:justificationMode="inter_word"
+            android:text="ID "
+
+            />
+
+
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_marginTop="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"/>
+            <ImageView
+                android:id="@+id/btnBorrarProducto"
+                android:layout_width="15pt"
+                android:layout_height="15pt"
+                android:layout_marginRight="5pt"
+                android:src="@drawable/ic_baseline_delete_forever_24"/>
+            <ImageView
+                android:id="@+id/btnModificarProducto"
+                android:layout_width="15pt"
+                android:layout_height="15pt"
+                android:layout_marginRight="5pt"
+                android:src="@drawable/ic_baseline_edit_24"/>
+
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

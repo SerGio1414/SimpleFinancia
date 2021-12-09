@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Finanzas App</string>
+    <string-array name="items">
+        <item>Seleccionar categoria</item>
+        <item>Transporte</item>
+        <item>Comida</item>
+        <item>Entretenimiento</item>
+        <item>Otros</item>
+    </string-array>
+</resources>
