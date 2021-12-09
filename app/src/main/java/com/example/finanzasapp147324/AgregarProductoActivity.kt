@@ -81,7 +81,6 @@ class AgregarProductoActivity : AppCompatActivity() {
             Toast.makeText(this,ex.message.toString(),Toast.LENGTH_LONG).show();
         }
 
-
         return max+1;
     }
 

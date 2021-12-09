@@ -1,5 +1,6 @@
 package com.example.finanzasapp147324
 
+import android.app.Activity
 import android.content.ContentValues
 import android.content.ContentValues.TAG
 import android.content.Context
@@ -12,15 +13,19 @@ import android.widget.BaseAdapter
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat.recreate
 import androidx.core.content.ContextCompat.startActivity
+import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
+import java.lang.Exception
 
 
 class AdaptadorProductos: BaseAdapter {
     lateinit var context: Context
     var productos: ArrayList<Producto> = ArrayList();
+    val db = Firebase.firestore
 
     constructor(context: Context, productos: ArrayList<Producto>) {
         this.context = context;
@@ -78,72 +83,59 @@ class AdaptadorProductos: BaseAdapter {
 
 
         vista.findViewById<ImageView>(R.id.btnBorrarProducto).setOnClickListener{
-            eliminar(producto.id.toString())
+            eliminar(producto.id.toString(),db);
             Toast.makeText(context,"Producto eliminado",Toast.LENGTH_SHORT).show();
 
         }
+
+
+        /////////////MODIFICAR Producto
+        vista.findViewById<ImageView>(R.id.btnModificarProducto).setOnClickListener{
+
+
+            val intent: Intent = Intent(context, ModificarProductoActivity::class.java)
+            intent.putExtra("id", producto.id)
+            intent.putExtra("nombre", producto.nombre)
+            intent.putExtra("desc", producto.descripcion)
+            intent.putExtra("img", producto.imagen)
+            intent.putExtra("gastoPorMes", producto.gastoPorMes)
+
+            context.startActivity(intent)
+
+            Toast.makeText(context,"Test boton",Toast.LENGTH_SHORT).show();
+
+         }
 
 
         return vista
 
     }
 
-    private fun eliminar(id: String){
+    private fun eliminar(id: String, db: FirebaseFirestore){
+        try {
 
+            var result = db.collection("productos").whereEqualTo("id",id).get();
 
-        val db = Firebase.firestore
-
-        db.collection("productos").document(id)
-            .delete()
-            .addOnSuccessListener { Log.d(TAG, "DocumentSnapshot successfully deleted!") }
-            .addOnFailureListener { e -> Log.w(TAG, "Error deleting document", e) }
-
-        /*
-        db.collection("productos")
-            .get()
-            .addOnSuccessListener { result ->
-                run loop@{
-                    for (document in result) {
-                        println("Day_doc_id : " + document.reference.parent.parent?.id)
-                        val idEliminarProducto = document.get(id);
-
-                        db.collection("productos").document(idEliminarProducto.toString())
-                            .delete()
-                            .addOnSuccessListener { Log.d(TAG, "DocumentSnapshot successfully deleted!") }
-                            .addOnFailureListener { e -> Log.w(TAG, "Error deleting document", e) }
-
-
-                        Toast.makeText(context, idEliminarProducto.toString(), Toast.LENGTH_SHORT).show()
-
-                        if (idEliminarProducto == id) return@loop // non-local return from the lambda passed to run
-                        print(idEliminarProducto)
-                    }
-                }
+            while (!result.isComplete){
 
             }
 
-        Toast.makeText(context, "Prueba loop", Toast.LENGTH_SHORT).show()
-     */
-       // Toast.makeText(context, "Se elimino el archivo", Toast.LENGTH_SHORT).show()
+            val DocumentID = result.result.documents.first().id;
 
 
-    /*
-        if (titulo==""){
-            Toast.makeText(context, "Error: título vacío", Toast.LENGTH_SHORT).show()
+            db.collection("productos").document(DocumentID)
+                .delete()
+                .addOnSuccessListener { result ->
+                    (context as MainActivity).recreate();
+                    /*val intent = Intent(context, MainActivity::class.java)
 
-        }else{
-            try {
-                //elimina el archivo con el titulo seleccionado
-             // val archivo = File(ubicacion(),titulo+".txt")
-               // archivo.delete()
-
-                Toast.makeText(context, "Se elimino el archivo", Toast.LENGTH_SHORT).show()
-            }catch (e: Exception){
-                Toast.makeText(context, "Error al eliminar el archivo", Toast.LENGTH_SHORT).show()
-            }
+                    context.startActivity(intent);*/
+                    Log.d(TAG, "DocumentSnapshot successfully deleted!") }
+                .addOnFailureListener { e -> Log.w(TAG, "Error deleting document", e) }
+        }catch (ex: Exception){
+            Toast.makeText(context,ex.message.toString(),Toast.LENGTH_LONG).show();
         }
 
-        */
     }
 }
 

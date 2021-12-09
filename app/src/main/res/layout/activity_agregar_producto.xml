@@ -20,7 +20,7 @@
             android:orientation="horizontal"
             android:gravity="center">
             <TextView
-
+                android:id="@+id/productoTitulo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Agregar producto para gasto mensual"

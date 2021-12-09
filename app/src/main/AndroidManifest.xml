@@ -28,6 +28,8 @@
             android:name=".GraficaActivity"/>
         <activity
             android:name=".AgregarProductoActivity"/>
+        <activity
+            android:name=".ModificarProductoActivity"/>
     </application>
 
 
